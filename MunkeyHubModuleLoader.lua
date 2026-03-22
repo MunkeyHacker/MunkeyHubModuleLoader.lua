@@ -1,3 +1,8 @@
+local LOADSTRING =
+    loadstring
+    or getgenv().loadstring
+    or load
+
 local function loadModule(url,name)
 
     local ok,code = pcall(function()
@@ -9,7 +14,7 @@ local function loadModule(url,name)
         return nil
     end
 
-    local chunk,err = loadstring(code)
+    local chunk,err = LOADSTRING(code)
 
     if not chunk then
         warn(name.." compile error:",err)
